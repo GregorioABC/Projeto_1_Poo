@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+//classe produto
 class Produto {
     String nome;
     int quantidade;
@@ -23,10 +23,12 @@ public class Main {
         login();
         menu();
     }
+    //usuario 
     static void cadastrarUsuario() {
         usuario = "admin";
         senha = "123";
     }
+    //login de acesso
     static void login() {
         System.out.println("Olá seja bem vindo(a) ao Mundo Suplementos!!");
         System.out.print("Digite seu login: ");
@@ -38,6 +40,7 @@ public class Main {
             System.exit(0);
         }
     }
+    //menu de escolha
     static void menu() {
         int opcao;
         do {
@@ -71,13 +74,22 @@ public class Main {
             }
         } while (opcao != 0);
     }
+    //adicionar produto
     static void adicionarProduto() {
         System.out.print("\nDigite o nome do Suplemento: ");
         String nome = scanner.nextLine();
         System.out.print("Digite a quantidade do suplemento: ");
         int quantidade = scanner.nextInt();
+        if (quantidade <= 0) {
+            System.out.println("Quantidade inválida. A quantidade deve ser maior que zero.");
+            return;
+        }
         System.out.print("Digite o preço do suplemento: ");
         double preco = scanner.nextDouble();
+        if (preco <= 0) {
+            System.out.println("Preço inválido. O preço deve ser positivo.");
+            return;
+        }
         scanner.nextLine(); 
         System.out.println("Digite o tipo do suplemento:");
         System.out.println("1. Em pó");
@@ -101,6 +113,7 @@ public class Main {
             System.out.println("ALERTA: Estoque baixo para o suplemento '" + nome + "'.");
         }
     }
+    //remover o produto
     static void removerProduto() {
         System.out.print("\nDigite o nome do suplemento a ser removido : ");
         String nome = scanner.nextLine();
@@ -120,6 +133,7 @@ public class Main {
             System.out.println("Suplemento não encontrado.");
         }
     }
+    //consultar o produto
     static void consultarProduto() {
         System.out.println("\nDigite o tipo do suplemento:");
         System.out.println("1. Em pó");
@@ -155,6 +169,7 @@ public class Main {
             System.out.println("Suplemento não encontrado no estoque.");
         }
     }
+    //atualizar o produto
     static void atualizarProduto() {
         System.out.print("\nDigite o nome do Suplemento que vai ser atualizado : ");
         String nome = scanner.nextLine();
