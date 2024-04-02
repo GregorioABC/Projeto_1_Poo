@@ -12,35 +12,42 @@ class Produto {
         this.categoria = categoria;
     }
 }
+    //programa principal
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static Produto[] estoque = new Produto[100];
     static int numProdutos = 0;
     static String usuario;
     static String senha;
+    //carrega para a entrada do programa 
     public static void main(String[] args) {
-        cadastrarUsuario();
+        criarUsuario();
         login();
         menu();
     }
-    //usuario 
-    static void cadastrarUsuario() {
-        usuario = "admin";
-        senha = "123";
-    }
-    //login de acesso
-    static void login() {
-        System.out.println("Olá seja bem vindo(a) ao Mundo Suplementos!!");
-        System.out.print("Digite seu login: ");
-        String login = scanner.nextLine();
+    //usuario para a entrada no programa
+    static void criarUsuario() {
+        System.out.println("Bem-vindo ao Mundo Suplementos! Vamos criar seu usuário:");
+        System.out.print("Digite seu nome de usuário: ");
+        usuario = scanner.nextLine();
         System.out.print("Digite sua senha: ");
-        String senhaDigitada = scanner.nextLine();
-        if (!login.equals(usuario) || !senhaDigitada.equals(senha)) {
-            System.out.println("Login ou senha incorretos.");
-            System.exit(0);
-        }
+        senha = scanner.nextLine();
+        System.out.println("Usuário criado com sucesso!");
     }
-    //menu de escolha
+    static void login() {
+        System.out.println("\nFaça login para continuar:");
+        String loginUsuario;
+        String senhaUsuario;
+        do {
+            System.out.print("Usuário: ");
+            loginUsuario = scanner.nextLine();
+            System.out.print("Senha: ");
+            senhaUsuario = scanner.nextLine();
+            if (!loginUsuario.equals(usuario) || !senhaUsuario.equals(senha)) {
+                System.out.println("Usuário ou senha incorretos. Tente novamente.");
+            }
+        } while (!loginUsuario.equals(usuario) || !senhaUsuario.equals(senha));
+    }
     static void menu() {
         int opcao;
         do {
@@ -90,12 +97,12 @@ public class Main {
             System.out.println("Preço inválido. O preço deve ser positivo.");
             return;
         }
-        scanner.nextLine(); 
+        scanner.nextLine();
         System.out.println("Digite o tipo do suplemento:");
         System.out.println("1. Em pó");
         System.out.println("2. Em pílulas");
         int tipo = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
         String categoria;
         if (tipo == 1) {
             categoria = "em pó";
@@ -139,7 +146,7 @@ public class Main {
         System.out.println("1. Em pó");
         System.out.println("2. Em pílulas");
         int tipo = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
         String categoria;
         if (tipo == 1) {
             categoria = "em pó";
